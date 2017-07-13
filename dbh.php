@@ -1,8 +1,8 @@
 <?php
 
 $servername = "localhost";
-$username = "root";
-$password = "QWEasd123#()";
+$username = "public";
+$password = "openpass";
 $db = "login-test";
 
 $conn = mysqli_connect($servername, $username, $password, $db);
