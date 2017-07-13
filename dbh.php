@@ -1,11 +1,15 @@
 <?php
 
-$servername = "localhost";
-$username = "public";
-$password = "openpass";
-$db = "login-test";
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+echo $url
+$server = $url["host"];
+$username = $url["user"];
+$password = $url["pass"];
+$db = substr($url["path"], 1);
 
-$conn = mysqli_connect($servername, $username, $password, $db);
+echo $server;
+
+$conn = new mysqli($server, $username, $password, $db);
 
 if (!$conn) {
    die("Connection failed: " . mysqli_connect_error());
