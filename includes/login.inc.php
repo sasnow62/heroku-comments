@@ -2,8 +2,9 @@
 session_start();
 include '../dbh.php';
 
-$uid = $_POST['uid'];
-$pwd = $_POST['pwd'];
+/* Escape inputs to prevent SQL Injection */
+$uid = mysqli_real_escape_string($conn, $_POST['uid']);
+$pwd = mysqli_real_escape_string($conn, $_POST['pwd']);
 
 $sql = "SELECT * FROM user WHERE uid='$uid' AND pwd='$pwd'";
 $result = $conn->query($sql);
